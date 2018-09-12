@@ -1,4 +1,15 @@
-# 1.基本数据类型
+
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [1.基本数据类型](#1基本数据类型)
+	- [自动类型转换](#自动类型转换)
+- [2.面试题](#2面试题)
+	- [1、](#1)
+	- [2、char类型变量能不能储存一个中文的汉子，为什么？](#2char类型变量能不能储存一个中文的汉子为什么)
+	- [3、Integer和int的区别](#3integer和int的区别)
+	- [4、switch语句能否作用在byte上，能否作用在long上，能否作用在string上？](#4switch语句能否作用在byte上能否作用在long上能否作用在string上)
+
+<!-- /TOC --># 1.基本数据类型
 | 数据类型 | 内存 | 包装类 |范围|
 | :------:| :------: | :------: | :------: |
 | boolean | 8位 | Boolean |true/false
@@ -30,7 +41,7 @@ byte,short,char—> int —> long—> float —> double
     (int) -13.89f = -13;
     ```  
 # 2.面试题
-## 1、
+## 1、short
 ```java
 short s1 = 1; s1 = s1 + 1; //1
 short s1 = 1; s1 +=1;      //2
