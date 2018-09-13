@@ -51,27 +51,29 @@ short s1 = 1; s1 +=1;      //2
 ## 2、char类型变量能不能储存一个中文的汉子，为什么？
 char类型变量是用来储存Unicode编码的字符的，unicode字符集包含了汉字，所以char类型当然可以存储汉字的，还有一种特殊情况就是某个生僻字没有包含在unicode编码字符集中，那么就char类型就不能存储该生僻字。
 ## 3、Integer和int的区别
-int是java的8种内置的原始数据类型。Java为每个原始类型都提供了一个包装类，Integer就是int的封装类
-int变量的默认值为0，Integer变量的默认值为null，这一点说明Integer可以区分出未赋值和值为0的区别。
+int是java的8种内置的原始数据类型。Java为每个原始类型都提供了一个包装类，Integer就是int的封装类int变量的默认值为0，Integer变量的默认值为null，这一点说明Integer可以区分出未赋值和值为0的区别。
+	- 类变量在[类加载准备](/Java基础\Java基本数据类型.md#准备)阶段被赋值为0，在
 ```java
 public class test{
-    static int i;
-    static Integer i1;
-    int j;
-    Integer j1;
-    public static void main(String args[]){
-    int k;
-    Integer k1;
-    System.out.println(i);// 0
-    System.out.println(i1);// null
-    System.out.println(new test().i);// 0
-    System.out.println(new test().i1);// null
-    System.out.println(new test().j);// 0
-    System.out.println(new test().j1);// null
-    System.out.println(j);//Compilation Failed
-    System.out.println(j1);//Compilation Failed
-    System.out.println(k);//Compilation Failed
-    System.out.println(k1);//Compilation Failed
+	static int i;//准备阶段赋值为0
+	static int i1 = 123;//准备阶段赋值为0，在初始化阶段会被赋值为123,  
+	final static i3 = 123;//final修饰的字段为ConstantValue，会在准备阶段直接赋值为123
+	static Integer i2;
+	int j;
+	Integer j1;
+	public static void main(String args[]){
+		int k;
+		Integer k1;
+		System.out.println(i);// 0
+		System.out.println(i2);// null
+		System.out.println(new test().i);// 0
+		System.out.println(new test().i2);// null
+		System.out.println(new test().j);// 0
+		System.out.println(new test().j1);// null
+		System.out.println(j);//Compilation Failed
+		System.out.println(j1);//Compilation Failed
+		System.out.println(k);//Compilation Failed
+		System.out.println(k1);//Compilation Failed
     }
 }
 ```
