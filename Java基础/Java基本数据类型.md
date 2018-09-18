@@ -9,7 +9,8 @@
 	- [3、Integer和int的区别](#3integer和int的区别)
 	- [4、switch语句能否作用在byte上，能否作用在long上，能否作用在string上？](#4switch语句能否作用在byte上能否作用在long上能否作用在string上)
 
-<!-- /TOC --># 1.基本数据类型
+<!-- /TOC -->
+# 1.基本数据类型
 | 数据类型 | 内存 | 包装类 |范围|
 | :------:| :------: | :------: | :------: |
 | boolean | 8位 | Boolean |true/false
