@@ -10,6 +10,9 @@
 	* [get方法](#get方法)
 	* [resize方法](#resize方法)
 * [红黑树为什么提高效率？](#红黑树为什么提高效率)
+* [求下标为什么是h&(length-1)而不是其他？为什么是2的幂？](#求下标为什么是hlength-1而不是其他为什么是2的幂)
+* [多线程操作HashMap时出现什么问题](#多线程操作hashmap时出现什么问题)
+* [参考](#参考)
 
 <!-- /code_chunk_output -->
 
@@ -166,3 +169,8 @@ final Node<K,V> getNode(int hash, Object key) {
 
 # 红黑树为什么提高效率？
 # 求下标为什么是h&(length-1)而不是其他？为什么是2的幂？
+h&(length - 1)，这句话除了上面的取模运算外还有一个非常重要的责任：均匀分布table数据和充分利用空间。
+![](assets/markdown-img-paste-20180922162813108.png)
+# 多线程操作HashMap时出现什么问题
+# 参考
+[HashMap的实现原理](https://blog.csdn.net/qq_27093465/article/details/52207152)
