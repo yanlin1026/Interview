@@ -1,15 +1,18 @@
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
 
-- [1.基本数据类型](#1基本数据类型)
-	- [自动类型转换](#自动类型转换)
-- [2.面试题](#2面试题)
-	- [1、](#1)
-	- [2、char类型变量能不能储存一个中文的汉子，为什么？](#2char类型变量能不能储存一个中文的汉子为什么)
-	- [3、Integer和int的区别](#3integer和int的区别)
-	- [4、switch语句能否作用在byte上，能否作用在long上，能否作用在string上？](#4switch语句能否作用在byte上能否作用在long上能否作用在string上)
+* [1.基本数据类型](#1基本数据类型)
+	* [自动类型转换](#自动类型转换)
+* [2.面试题](#2面试题)
+	* [1、short](#1-short)
+	* [2、char类型变量能不能储存一个中文的汉子，为什么？](#2-char类型变量能不能储存一个中文的汉子为什么)
+	* [3、Integer和int的区别](#3-integer和int的区别)
+	* [4、switch语句能否作用在byte上，能否作用在long上，能否作用在string上？](#4-switch语句能否作用在byte上能否作用在long上能否作用在string上)
+	* [5、==与equals](#5-与equals)
 
-<!-- /TOC -->
+<!-- /code_chunk_output -->
+
 # 1.基本数据类型
 | 数据类型 | 内存 | 包装类 |范围|
 | :------:| :------: | :------: | :------: |
@@ -82,3 +85,12 @@ public class test{
 ## 4、switch语句能否作用在byte上，能否作用在long上，能否作用在string上？
 
 byte的存储范围小于int，可以向int类型进行隐式转换，所以switch可以作用在byte上long的存储范围大于int，不能向int进行隐式转换，只能强制转换，所以switch不可以作用在long上String在1.7版本之前不可以，1.7版本之后switch就可以作用在String上了。
+## 5、==与equals
+### ==
+比较的是变量(栈)内存中存放的对象的(堆)内存地址，用来判断两个对象的地址是否相同，即是否是指相同一个对象。比较的是真正意义上的指针操作。
+1. 比较的是操作符两端的操作数是否是同一个**对象**。
+2. 两边的操作数必须是同一类型的（可以是父子类之间）才能编译通过。
+3. 比较的是地址，如果是具体的阿拉伯数字的比较，值相等则为true，如：
+int a=10 与 long b=10L 与 double c=10.0都是相同的（为true），因为他们都指向地址为10的堆。
+### equals
+equals用来比较的是两个对象的内容是否相等，由于所有的类都是继承自java.lang.Object类的，所以适用于所有对象，如果没有对该方法进行覆盖的话，调用的仍然是Object类中的方法，而Object中的equals方法返回的却是==的判断。
