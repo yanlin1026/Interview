@@ -27,7 +27,7 @@
     负载因子 0.75
     变红黑树 8
 ## hash算法
-```Java
+```java
 static final int hash(Object key) {
     int h;
     return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
@@ -37,7 +37,7 @@ static final int hash(Object key) {
 ![下标计算](assets/markdown-img-paste-20180922155956608.png)
 ## put方法
 实际调用putVal()方法：
-```Java
+```java
 public V put(K key, V value) {
     return putVal(hash(key), key, value, false, true);  
 }
@@ -49,6 +49,7 @@ public V put(K key, V value) {
 4. 判断table[i] 是否为treeNode，即table[i] 是否是红黑树，如果是红黑树，则直接在树中插入键值对，否则转向5；
 5. 遍历table[i]，判断链表长度是否大于8，大于8的话把链表转换为红黑树，在红黑树中执行插入操作，否则进行链表的插入操作；遍历过程中若发现key已经存在直接覆盖value即可；
 6. 插入成功后，判断实际存在的键值对数量size是否超多了最大容量threshold，如果超过，进行扩容。
+
 ```java
 final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
     Node<K,V>[] tab; Node<K,V> p; int n, i;
@@ -123,6 +124,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
     return null;
 }
 ```
+
 ### 流程：
 1. 根据key计算得到key.hash = (h = k.hashCode()) ^ (h >>> 16)；
 2. 根据key.hash计算得到桶数组的索引index = key.hash & (table.length - 1),这样就找到该key的存放位置了：
@@ -132,12 +134,13 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
 3. 如果该链表没有这个节点，那么采用尾插法新增节点保存新数据，返回null；如果该链表已经有这个节点了，那么找到该节点并更新新数据，返回老数据。
 ## get方法
 实际调用方法为getNode方法
-```Java
+```java
 public V get(Object key) {
     Node<k,v> e;
     return (e = getNode(hash(key), key)) == null ? null : e.value;
 }
 ```
+
 ```java
 final Node<K,V> getNode(int hash, Object key) {
     Node<K,V>[] tab; Node<K,V> first, e; int n; K k;
