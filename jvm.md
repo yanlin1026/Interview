@@ -91,6 +91,8 @@ VM为每个对象定义了一个对象年龄(Age)计数器, 对象在Eden出生�
 1. 该类所有的实例都已经被回收, Java堆中不存在该类的任何实例;
 2. 该类对应的Class对象没有在任何地方被引用(也就是在任何地方都无法通过反射访问该类的方法);
 3. 加载该类的ClassLoader已经被回收.
+# 垃圾回收器
+##
 # 参考
 [JVM初探：内存分配、GC原理与垃圾收集器](http://www.importnew.com/23035.html)
 [深入理解 Java 垃圾回收机制](https://www.cnblogs.com/andy-zcx/p/5522836.html)
