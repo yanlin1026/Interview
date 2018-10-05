@@ -56,7 +56,7 @@ final int hash(Object k) {
 实际调用putVal()方法：
 ```java
 public V put(K key, V value) {
-    return putVal(hash(key), key, value, false, true);  
+    return putVal(hash(key), key, value, false, true);
 }
 ```
 ![put流程](assets/markdown-img-paste-20180922160221546.png)
@@ -74,7 +74,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
     // table未初始化或者长度为0，进行扩容
     if ((tab = table) == null || (n = tab.length) == 0)
         n = (tab = resize()).length;
-    // 步骤2：计算index，并对null做处理  
+    // 步骤2：计算index，并对null做处理
     // (n - 1) & hash 确定元素存放在哪个桶中，桶为空，新生成结点放入桶中(此时，这个结点是放在数组中)
     if ((p = tab[i = (n - 1) & hash]) == null)
         tab[i] = newNode(hash, key, value, null);
