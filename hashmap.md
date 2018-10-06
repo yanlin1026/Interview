@@ -27,6 +27,7 @@
     负载因子 0.75
     变红黑树 8
 ## hash算法
+jdk 1.8
 ```java
 static final int hash(Object key) {
     int h;
@@ -35,11 +36,27 @@ static final int hash(Object key) {
 ```
 如果key为null，返回key=0；否则如下图
 ![下标计算](assets/markdown-img-paste-20180922155956608.png)
+1.7 通过两次散列的方式获取key的hash值
+```java
+final int hash(Object k) {
+	int h = hashSeed;//初始为0
+	//如果key是字符串类型，就使用stringHash32来生成hash值
+	if (0 != h && k instanceof String) {
+		return sun.misc.Hashing.stringHash32((String) k);
+	}
+	//一次散列
+	h ^= k.hashCode();
+	//二次散列
+	h ^= (h >>> 20) ^ (h >>> 12);
+	return h ^ (h >>> 7) ^ (h >>> 4);
+}
+```
+
 ## put方法
 实际调用putVal()方法：
 ```java
 public V put(K key, V value) {
-    return putVal(hash(key), key, value, false, true);  
+    return putVal(hash(key), key, value, false, true);
 }
 ```
 ![put流程](assets/markdown-img-paste-20180922160221546.png)
@@ -57,7 +74,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
     // table未初始化或者长度为0，进行扩容
     if ((tab = table) == null || (n = tab.length) == 0)
         n = (tab = resize()).length;
-    // 步骤2：计算index，并对null做处理  
+    // 步骤2：计算index，并对null做处理
     // (n - 1) & hash 确定元素存放在哪个桶中，桶为空，新生成结点放入桶中(此时，这个结点是放在数组中)
     if ((p = tab[i = (n - 1) & hash]) == null)
         tab[i] = newNode(hash, key, value, null);
@@ -175,5 +192,8 @@ final Node<K,V> getNode(int hash, Object key) {
 h&(length - 1)，这句话除了上面的取模运算外还有一个非常重要的责任：均匀分布table数据和充分利用空间。
 ![](assets/markdown-img-paste-20180922162813108.png)
 # 多线程操作HashMap时出现什么问题
+1. 多线程put操作后，get操作导致死循环。
+2. 多线程put非NULL元素后，get操作得到NULL值。
+3. 多线程put操作，导致元素丢失。
 # 参考
 [HashMap的实现原理](https://blog.csdn.net/qq_27093465/article/details/52207152)
