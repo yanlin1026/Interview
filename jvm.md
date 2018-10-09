@@ -22,7 +22,9 @@
 <!-- /code_chunk_output -->
 
 # JVM内存模型
-<img src = assets/markdown-img-paste-20180916154302484.png width = 450> <img src = assets/markdown-img-paste-20180918102355558.png width = 450>
+
+<img src = assets/markdown-img-paste-20180916154302484.png width = 400> <img src = assets/markdown-img-paste-20180918102355558.png width = 400>
+
 1. 程序计数器：_**线程私有**_
   - 程序计数器是一块较小的内存空间，它的作用可以看作是当前线程所执行的字节码的行号指示器。
   - 多线程是通过线程轮流切换并分配处理器执行时间实现，每条线程都需要有一个独立的程序计数器，各个线程之间的计数器互不影响，独立存储
@@ -89,6 +91,7 @@ VM为每个对象定义了一个对象年龄(Age)计数器, 对象在Eden出生�
 ## 分代收集
 ### 新生代-复制算法
 该算法的核心是将可用内存按容量划**分为大小相等的两块, 每次只用其中一块, 当这一块的内存用完, 就将还存活的对象复制到另外一块上面, 然后把已使用过的内存空间一次清理掉.**
+
 <img src = assets/markdown-img-paste-20180916162119289.png width = 350>
 
 ### 老年代-标记清除算法
