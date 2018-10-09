@@ -1,7 +1,7 @@
 # spring boot  
 # spring ioc
 # spring mvc
-<img src = assets/markdown-img-paste-20181009163137631.png width = 600>
+<img src = assets/markdown-img-paste-20181009163137631.png width = 900>
 
 1. 发起请求到前端控制器(DispatcherServlet)  
 2. 前端控制器请求HandlerMapping查找 Handler （可以根据xml配置、注解进行查找）  
@@ -13,4 +13,4 @@
 8. 前端控制器请求视图解析器去进行视图解析 （根据逻辑视图名解析成真正的视图(jsp)），通过这种策略很容易更换其他视图技术，只需要更改视图解析器即可
 9. 视图解析器向前端控制器返回View
 10. 前端控制器进行视图渲染 （视图渲染将模型数据(在ModelAndView对象中)填充到request域）
-第十一步：前端控制器向用户响应结果
+11. 前端控制器向用户响应结果
