@@ -23,7 +23,7 @@
 
 # JVM内存模型
 
-<img src = assets/markdown-img-paste-20180916154302484.png width = 450> <img src = assets/markdown-img-paste-20180918102355558.png width = 400>
+<img src = assets/markdown-img-paste-20180916154302484.png width = 450> <img src = assets/markdown-img-paste-20180918102355558.png width = 450>
 
 1. 程序计数器：_**线程私有**_
   - 程序计数器是一块较小的内存空间，它的作用可以看作是当前线程所执行的字节码的行号指示器。
