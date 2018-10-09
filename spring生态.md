@@ -15,3 +15,5 @@
 9. 视图解析器向前端控制器返回View
 10. 前端控制器进行视图渲染 （视图渲染将模型数据(在ModelAndView对象中)填充到request域）
 11. 前端控制器向用户响应结果
+
+<img src = assets/markdown-img-paste-20181009163137631.png >
