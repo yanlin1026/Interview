@@ -20,7 +20,9 @@
 # 实现原理
 数组（桶）+链表+红黑树：当链表的长度大于8时，存储桶中的存储方式变成红黑树，
 [红黑树的引入是为了提高效率](#红黑树为什么提高效率)。
+
 <img src = assets/markdown-img-paste-20180922154258827.png width = 350>
+
 # 源码分析
 > 继承AbstractMap<K,V>，实现了Map<K,V>, Cloneable, Serializable接口
   默认容量 1<<4 == 16
