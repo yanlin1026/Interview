@@ -13,19 +13,21 @@
 * [求下标为什么是h&(length-1)而不是其他？为什么是2的幂？](#求下标为什么是hlength-1而不是其他为什么是2的幂)
 * [多线程操作HashMap时出现什么问题](#多线程操作hashmap时出现什么问题)
 * [参考](#参考)
+* [面试题](#面试题)
 
 <!-- /code_chunk_output -->
 
 # 实现原理
 数组（桶）+链表+红黑树：当链表的长度大于8时，存储桶中的存储方式变成红黑树，
 [红黑树的引入是为了提高效率](#红黑树为什么提高效率)。
-![结构](assets/markdown-img-paste-20180922154258827.png)
+<img src = assets/markdown-img-paste-20180922154258827.png width = 350>
 # 源码分析
-    继承AbstractMap<K,V>，实现了Map<K,V>, Cloneable, Serializable接口
-    默认容量 1<<4 == 16
-    最大容量 1<<30
-    负载因子 0.75
-    变红黑树 8
+> 继承AbstractMap<K,V>，实现了Map<K,V>, Cloneable, Serializable接口
+  默认容量 1<<4 == 16
+	最大容量 1<<30
+	负载因子 0.75
+	变红黑树 8
+
 ## hash算法
 jdk 1.8
 ```java
@@ -59,7 +61,8 @@ public V put(K key, V value) {
     return putVal(hash(key), key, value, false, true);
 }
 ```
-![put流程](assets/markdown-img-paste-20180922160221546.png)
+<img src = assets/markdown-img-paste-20180922160221546.png width = 500 height = 300>
+
 1. 判断键值对数组table[i]是否为空或为null，否则执行resize()进行扩容；
 2. 根据键值key计算hash值得到插入的数组索引i，如果table[i]==null，直接新建节点添加，转向⑥，如果table[i]不为空，转向3；
 3. 判断table[i]的首个元素是否和key一样，如果相同直接覆盖value，否则转向4，这里的相同指的是hashCode以及equals；
@@ -197,3 +200,12 @@ h&(length - 1)，这句话除了上面的取模运算外还有一个非常重要
 3. 多线程put操作，导致元素丢失。
 # 参考
 [HashMap的实现原理](https://blog.csdn.net/qq_27093465/article/details/52207152)
+# 面试题
+1. hashmap在put的时候插在前面还是后面（2018小米）
+1.7 版本：代码可以看出是插入到**链表的头部的**
+<img src =assets/markdown-img-paste-20181009162006319.png>
+<img src = assets/markdown-img-paste-20181009155709712.png width = 350 height = 150>
+源码可以看出是在**节点后面的**，如果大于树的阈值，会变成红黑树。
+2. hashmap的put的过程，越详细越好（2018小米）
+[hashmap的put流程：](#流程)
+3.
