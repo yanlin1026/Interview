@@ -40,6 +40,7 @@ static final int hash(Object key) {
 ```
 如果key为null，返回key=0；否则如下图
 ![下标计算](assets/markdown-img-paste-20180922155956608.png)
+
 1.7 通过两次散列的方式获取key的hash值
 ```java
 final int hash(Object k) {
@@ -207,7 +208,7 @@ h&(length - 1)，这句话除了上面的取模运算外还有一个非常重要
 1.7 版本：代码可以看出是插入到**链表的头部的**
 <img src =assets/markdown-img-paste-20181009162006319.png>
 <img src = assets/markdown-img-paste-20181009155709712.png width = 350 height = 150>
+
 源码可以看出是在**节点后面的**，如果大于树的阈值，会变成红黑树。
 2. hashmap的put的过程，越详细越好（2018小米）
 [hashmap的put流程：](#流程)
-3.
