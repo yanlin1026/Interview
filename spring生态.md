@@ -1,8 +1,10 @@
 # spring boot  
 # spring ioc
 # spring mvc
-
+<center>
 <img src = assets/markdown-img-paste-20181009163137631.png width = 600>
+</center>
+
 1. 发起请求到前端控制器(DispatcherServlet)  
 2. 前端控制器请求HandlerMapping查找 Handler （可以根据xml配置、注解进行查找）  
 3. 处理器映射器HandlerMapping向前端控制器返回Handler，HandlerMapping会把请求映射为HandlerExecutionChain对象（包含一个Handler处理器（页面控制器）对象，多个HandlerInterceptor拦截器对象），通过这种策略模式，很容易添加新的映射策略
