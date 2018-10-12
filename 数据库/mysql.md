@@ -127,6 +127,8 @@
 slave-1是master的从，slave-1又是slave-2,slave-3,...的主，同时slave-1不再负责select。slave-1将master的复制线程的负担，转移到自己的身上。这就是所谓的**多级复制**的概念。
 ### 5.主从复制中有master,slave1,slave2,...等等这么多MYSQL数据库，那比如一个JAVA WEB应用到底应该连接哪个数据库?
 通过一个mysql proxy负责web的连接，同时mysql proxy还负责主备之间的连接。如下图：
+
 <img src = assets/markdown-img-paste-20180923141959832.png width = 500 height = 250>
+
 ### 6.当一个select发往mysql proxy，可能这次由slave-2响应，下次由slave-3响应，这样的话，就无法利用查询缓存了。
 应该找一个共享式的缓存，比如memcache来解决。将slave-2,slave-3,...这些查询的结果都缓存至mamcache中。

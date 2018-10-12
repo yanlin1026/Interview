@@ -13,6 +13,7 @@
 <!-- /code_chunk_output -->
 
 # TCP连接的状态
+
 <img src = assets/markdown-img-paste-20181009173627542.png width = 300>
 
 ```
@@ -32,6 +33,7 @@ CLOSED - 没有任何连接状态；
 1. 客户端独有的：（1）SYN_SENT （2）FIN_WAIT1 （3）FIN_WAIT2 （4）CLOSING （5）TIME_WAIT 。
 2. 服务器独有的：（1）LISTEN （2）SYN_RCVD （3）CLOSE_WAIT （4）LAST_ACK 。
 3. 共有的：（1）CLOSED （2）ESTABLISHED 。
+
 # 三次握手
 1. 首先由Client发出请求连接即，SYN=1，ACK=0(请看头字段的介绍)，TCP规定SYN=1时不能携带数据，但要消耗一个序号，因此声明自己的序号是 seq=x。
 2. 然后 Server 进行回复确认，即 SYN=1 ACK=1 seq=y，ack=x+1。
