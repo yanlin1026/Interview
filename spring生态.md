@@ -2,9 +2,7 @@
 # spring ioc
 # spring mvc
 
-<center>
 <img src = assets/markdown-img-paste-20181009163137631.png width = 600>
-</center>
 
 1. 发起请求到前端控制器(DispatcherServlet)  
 2. 前端控制器请求HandlerMapping查找 Handler （可以根据xml配置、注解进行查找）  
